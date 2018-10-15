@@ -1596,9 +1596,10 @@ void CUDTUnited::removeSocket(const SRTSOCKET u)
        HLOGC(mglog.Debug, log << "MUXER id=" << mid << " lost last socket %"
            << u << " - deleting muxer bound to port "
            << m->second.m_pChannel->bindAddressAny().hport());
-      m->second.m_pChannel->close();
+      // m->second.m_pChannel->close();
       delete m->second.m_pSndQueue;
       delete m->second.m_pRcvQueue;
+      m->second.m_pChannel->close();
       delete m->second.m_pTimer;
       delete m->second.m_pChannel;
       m_mMultiplexer.erase(m);

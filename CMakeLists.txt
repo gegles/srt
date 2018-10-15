@@ -51,7 +51,7 @@ endif()
 # Set CMAKE_BUILD_TYPE properly, now that you know
 # that ENABLE_DEBUG is set as it should.
 
-if (ENABLE_DEBUG EQUAL 1)
+if (ENABLE_DEBUG)
 	set (CMAKE_BUILD_TYPE "Debug")
 elseif (ENABLE_DEBUG EQUAL 2)
 	set (CMAKE_BUILD_TYPE "RelWithDebInfo")
@@ -710,7 +710,7 @@ if ( ENABLE_CXX11 )
 
 	# srt-file-transmit must be temporarily blocked on Windows because it's not yet portable
 	if (NOT WIN32)
-		srt_add_application(srt-file-transmit ${VIRTUAL_srtsupport})
+		# srt_add_application(srt-file-transmit ${VIRTUAL_srtsupport})
 	endif()
 
 	if (MINGW)
@@ -718,7 +718,7 @@ if ( ENABLE_CXX11 )
 		# https://github.com/Haivision/srt/issues/177
 		message(WARNING "On MinGW, some C++11 apps are blocked due to lacking proper C++11 headers for <thread>. FIX IF POSSIBLE.")
    else()
-		srt_add_application(srt-multiplex ${VIRTUAL_srtsupport})
+		# srt_add_application(srt-multiplex ${VIRTUAL_srtsupport})
 	endif()
 
 	if (ENABLE_TESTING)
